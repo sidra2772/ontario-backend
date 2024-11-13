@@ -27,6 +27,7 @@ class Services(AbstractTimeStampModel):
     service_status = models.CharField(max_length=255, default='Pending', choices=SERVICE_STATUS)
     short_description = models.CharField(max_length=50, null=True, blank=True)
     description = models.TextField(null=True, blank=True)
+    discounted_price = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
     image = models.FileField(upload_to='services', null=True, blank=True)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     currency = models.ForeignKey('assets.Currency', related_name='servicesCurrency', on_delete=models.CASCADE,
