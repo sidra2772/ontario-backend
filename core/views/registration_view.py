@@ -40,7 +40,7 @@ class RegistrationView(APIView):
 
                 profile_serializer = UserProfileSerializer(data=profile)
                 profile_serializer.is_valid(raise_exception=True)
-                if profile_serializer.validated_data.get('user_type') != 'client':
+                if serializer.validated_data.get('user_type') != 'client':
                     business_profile = profile_serializer.validated_data.pop('business_profile', None)
                     if not business_profile:
                         return Response({

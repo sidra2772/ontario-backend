@@ -50,8 +50,8 @@ class UserManager(BaseUserManager):
 
 
 USER_TYPE_CHOICES = (
-    ('supplier', 'Supplier'),
-    ('client', 'Client'),
+    ('supplier', 'supplier'),
+    ('client', 'client'),
     ('admin', 'Admin'),
 
 
