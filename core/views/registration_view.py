@@ -40,20 +40,20 @@ class RegistrationView(APIView):
 
                 profile_serializer = UserProfileSerializer(data=profile)
                 profile_serializer.is_valid(raise_exception=True)
-
-                business_profile = profile_serializer.validated_data.pop('business_profile', None)
-                if not business_profile:
-                    return Response({
-                        "message": "Business profile is required"
-                    }, status=status.HTTP_400_BAD_REQUEST)
-                if business_profile:
-                    business_profile_serializer = BusinessProfileSerializer(data=business_profile)
-                    business_profile_serializer.is_valid(raise_exception=True)
-                    business_domain = business_profile_serializer.validated_data.get('business_domain', None)
-                    check_business_email_valid(serializer.instance.email, business_domain)
-                    business_profile_serializer.save()
-                    profile_serializer.save(user=serializer.instance,
-                                            business_profile=business_profile_serializer.instance)
+                if profile_serializer.validated_data.get('user_type') != 'client':
+                    business_profile = profile_serializer.validated_data.pop('business_profile', None)
+                    if not business_profile:
+                        return Response({
+                            "message": "Business profile is required"
+                        }, status=status.HTTP_400_BAD_REQUEST)
+                    if business_profile:
+                        business_profile_serializer = BusinessProfileSerializer(data=business_profile)
+                        business_profile_serializer.is_valid(raise_exception=True)
+                        business_domain = business_profile_serializer.validated_data.get('business_domain', None)
+                        check_business_email_valid(serializer.instance.email, business_domain)
+                        business_profile_serializer.save()
+                        profile_serializer.save(user=serializer.instance,
+                                                business_profile=business_profile_serializer.instance)
                 profile_serializer.save(
                     user=serializer.instance)
 
