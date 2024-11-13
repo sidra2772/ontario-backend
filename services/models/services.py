@@ -38,8 +38,8 @@ class Services(AbstractTimeStampModel):
             blank=True,
             default=list,
         )
-    availability_start_time = models.TimeField()
-    availability_end_time = models.TimeField()
+    availability_start_time = models.TimeField(null=True, blank=True)
+    availability_end_time = models.TimeField(null=True, blank=True)
     availability_days = models.CharField(max_length=255, choices=AVAILABLE_DAYS, default='all_days')
     is_active = models.BooleanField(default=True)
 
