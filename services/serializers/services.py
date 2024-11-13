@@ -1,7 +1,6 @@
 from rest_framework import serializers
 from services.models import Services
 from dashboard.serializers import SupplierFeedbackSerializer
-from .applications import ApplicationSerializer
 
 
 class ServicesSerializer(serializers.ModelSerializer):
@@ -19,7 +18,6 @@ class ServicesSerializer(serializers.ModelSerializer):
     supplier_image = serializers.ImageField(source='supplier.image', read_only=True)
     service_feedback = SupplierFeedbackSerializer(many=True, read_only=True)
     rating = serializers.FloatField(read_only=True)
-    applications = ApplicationSerializer(many=True)
 
     class Meta:
         model = Services
