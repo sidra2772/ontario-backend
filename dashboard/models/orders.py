@@ -34,6 +34,8 @@ class Orders(AbstractTimeStampModel):
     )
     client = models.ForeignKey(
         "userprofile.UserProfile", on_delete=models.CASCADE, related_name='client_offer', null=True, blank=True)
+    job = models.ForeignKey(
+        "jobs.Jobs", on_delete=models.CASCADE, related_name='job_offer', null=True, blank=True)
     service = models.ForeignKey(
         "services.Services", on_delete=models.CASCADE, related_name='service_offer')
     is_custom_offer = models.BooleanField(default=False)

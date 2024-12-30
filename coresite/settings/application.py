@@ -14,6 +14,7 @@ DJANGO_APPLICATIONS = [
 
 CUSTOM_APPLICATIONS = [
     'core',
+    'jobs',
     'chat',
     'blog',
     'assets',

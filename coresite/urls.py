@@ -38,6 +38,7 @@ urlpatterns = [
     path('api/admin/', admin.site.urls),
     path('api/user/', include('core.urls')),
     path('api/chat/', include('chat.urls')),
+    path('api/jobs/', include('jobs.urls')),
     path('api/assets/', include('assets.urls')),
     path('api/service/', include('services.urls')),
     path('api/home-page/', include('homePage.urls')),
