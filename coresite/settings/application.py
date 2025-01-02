@@ -30,7 +30,7 @@ CUSTOM_APPLICATIONS = [
 ]
 
 THIRD_PARTY_APPLICATIONS = [
-
+    'django_ckeditor_5',
     'drf_yasg',
     'channels',
     'corsheaders',

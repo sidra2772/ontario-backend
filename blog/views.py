@@ -1,11 +1,30 @@
 from rest_framework import viewsets
 from django.utils.text import slugify
-from .models import BlogPost
-from django.shortcuts import render,get_object_or_404
-from .serializers import BlogPostSerializer
+from .models import BlogPost, Events, EventBookings
+from rest_framework.generics import CreateAPIView, ListAPIView, RetrieveAPIView
+from .serializers import BlogPostSerializer, EventsSerializer, EventBookingsSerializer
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from utils.paginations import OurLimitOffsetPagination
 # Create your views here.
+
+
+class CreateBooking(CreateAPIView):
+	serializer_class = EventBookingsSerializer
+	queryset = EventBookings.objects.all()
+	permission_classes = [AllowAny]
+
+class ListEvents(ListAPIView):
+	serializer_class = EventsSerializer
+	queryset = Events.objects.all()
+	permission_classes = [AllowAny]
+	pagination_class = OurLimitOffsetPagination
+
+class RetrieveEvent(RetrieveAPIView):
+	serializer_class = EventsSerializer
+	queryset = Events.objects.all()
+	permission_classes = [AllowAny]
+
+
 
 class BlogModelViewSet(viewsets.ModelViewSet):
 	# permission_classes = (AllowAny,)

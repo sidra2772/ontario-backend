@@ -47,6 +47,7 @@ urlpatterns = [
     path('api/blog/', include('blog.urls')),
     path('api/api-auth/', include('rest_framework.urls')),
     path('api/notification/', include('notification.urls')),
+    path("ckeditor5/", include('django_ckeditor_5.urls')),
     path('api/categories/', include('categoriespage.urls')),
     path('api/help-support/', include('helpandsupport.urls')),
     path('api/admin-dashboard/', include('adminDashboard.urls')),

@@ -1,4 +1,4 @@
-from .models  import BlogPost
+from .models  import BlogPost, Events, EventBookings
 from rest_framework import serializers
 
 
@@ -8,4 +8,17 @@ class BlogPostSerializer(serializers.ModelSerializer):
     class Meta:
         model = BlogPost
         fields = '__all__'
+
+class EventsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Events
+        fields = '__all__'
+
+
+
+class EventBookingsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = EventBookings
+        fields = '__all__'
+
 
