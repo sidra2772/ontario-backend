@@ -21,6 +21,7 @@ class Jobs(AbstractTimeStampModel):
 
 class JobBids(AbstractTimeStampModel):
     job = models.ForeignKey('jobs.Jobs', on_delete=models.CASCADE, related_name='bids')
+    bit_type = models.CharField(max_length=255)
     bidder = models.ForeignKey('userprofile.UserProfile', on_delete=models.CASCADE, related_name='bids', null=True, blank=True)
     bid_amount = models.DecimalField(max_digits=10, decimal_places=2)
     bid_description = models.TextField()
