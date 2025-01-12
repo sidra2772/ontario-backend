@@ -43,9 +43,4 @@ class BlogModelViewSet(viewsets.ModelViewSet):
 		return [permission() for permission in permission_classes]
 
 	def perform_create(self, serializer):
-		latest_blog = BlogPost.objects.last()
-		if latest_blog:
-			latest_blog = latest_blog.id + 1
-		else:
-			latest_blog = 1
-		serializer.save(slug=str(latest_blog) + "-" + slugify(serializer.validated_data['title']))
+		serializer.save(author=self.request.user.profile)

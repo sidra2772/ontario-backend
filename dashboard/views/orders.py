@@ -48,9 +48,7 @@ class OrdersViewSet(ModelViewSet):
         client = self.request.user.profile
         if is_custom:
             client = serializer.validated_data.get('client', None)
-        serializer.save(order_number=get_order_number(),
-                        hiring_date=datetime.datetime.now(),
-                        client=client, )
+        serializer.save(order_number=get_order_number(), hiring_date=datetime.datetime.now(), client=client)
         instance = serializer.instance
         if not is_custom:
             notification = create_notification_object_apis(
