@@ -10,6 +10,7 @@ class BlogPostSerializer(serializers.ModelSerializer):
     author_bio = serializers.CharField(source='author.bio', read_only=True)
     author_first_name = serializers.CharField(source='author.first_name', read_only=True)
     author_last_name = serializers.CharField(source='author.last_name', read_only=True)
+    author = serializers.IntegerField(source='author.id', read_only=True)
 
     
     class Meta:
