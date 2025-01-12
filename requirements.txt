@@ -14,6 +14,7 @@ cffi==1.16.0
 channels==4.1.0
 channels-redis==4.2.0
 charset-normalizer==3.3.2
+click==8.1.8
 constantly==23.10.4
 cryptography==42.0.8
 daphne==4.1.2
@@ -33,6 +34,7 @@ djangorestframework-simplejwt==5.3.1
 drf-yasg==1.21.7
 flake8==7.0.0
 gunicorn==23.0.0
+h11==0.14.0
 hyperlink==21.0.0
 idna==3.7
 incremental==22.10.0
@@ -78,6 +80,7 @@ txaio==23.1.1
 typing_extensions==4.12.1
 uritemplate==4.1.1
 urllib3==2.2.1
+uvicorn==0.34.0
 wget==3.2
 wrapt==1.16.0
 zope.interface==7.1.1
