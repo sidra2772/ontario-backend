@@ -37,7 +37,7 @@ class Orders(AbstractTimeStampModel):
     job = models.ForeignKey(
         "jobs.JobBids", on_delete=models.CASCADE, related_name='job_offer', null=True, blank=True)
     service = models.ForeignKey(
-        "services.Services", on_delete=models.CASCADE, related_name='service_offer')
+        "services.Services", on_delete=models.CASCADE, related_name='service_offer',null=True, blank=True)
     is_custom_offer = models.BooleanField(default=False)
     payment_via = models.CharField(
         max_length=255, choices=PAYMENT_VIA, null=True, blank=True)
