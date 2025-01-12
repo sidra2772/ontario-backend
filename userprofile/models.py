@@ -42,6 +42,8 @@ class UserProfile(AbstractTimeStampModel):
     address = models.CharField(max_length=255, blank=True, null=True)
     image = models.ImageField(upload_to='images', blank=True, null=True)
     is_online = models.BooleanField(default=False)
+    bio = models.TextField(blank=True, null=True)
+    
 
     def __str__(self):
         return self.first_name
