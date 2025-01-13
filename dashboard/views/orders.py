@@ -36,10 +36,10 @@ class OrdersViewSet(ModelViewSet):
             if self.request.method == 'UPDATE' or self.request.method == 'PATCH' or self.request.method == 'PUT':
                 return Orders.objects.filter(
                     Q(client=self.request.user.profile) | Q(service__supplier=self.request.user.profile) |
-                    Q(job__user=self.request.user.profile))
+                    Q(job__user=self.request.user.profile)| Q(job__bidder=self.request.user.profile))
             if self.request.user.user_type == 'client':
                 return self.queryset.filter(client=self.request.user.profile).exclude(status='pending')
-            return self.queryset.filter(service__supplier=self.request.user.profile).exclude(status='pending')
+            return self.queryset.filter(Q(service__supplier=self.request.user.profile)|Q(job__bidder=self.request.user.profile)).exclude(status='pending')
         return self.queryset.none()
 
     def perform_create(self, serializer):
