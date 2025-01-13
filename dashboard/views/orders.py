@@ -51,25 +51,25 @@ class OrdersViewSet(ModelViewSet):
         serializer.save(order_number=get_order_number(), hiring_date=datetime.datetime.now(), client=client)
         instance = serializer.instance
         if not is_custom:
-            notification = create_notification_object_apis(
-                notification_type='Order',
-                sender=instance.client.user,
-                receiver=instance.service.supplier.user,
-                order=instance,
-                heading='Placed a order',
-                description=f'Order is placed successfully with order number {serializer.data["order_number"]}'
-            )
-            send_notification(notification)
-        else:
-            notification = create_notification_object_apis(
-                notification_type='Chat',
-                sender=instance.service.supplier.user,
-                receiver=instance.client.user,
-                order=instance,
-                heading='Placed a custom order',
-                description=f'Custom order is placed successfully with order number {serializer.data["order_number"]}'
-            )
-            send_notification(notification)
+        #     notification = create_notification_object_apis(
+        #         notification_type='Order',
+        #         sender=instance.client.user,
+        #         receiver=instance.service.supplier.user,
+        #         order=instance,
+        #         heading='Placed a order',
+        #         description=f'Order is placed successfully with order number {serializer.data["order_number"]}'
+        #     )
+        #     send_notification(notification)
+        # else:
+        #     notification = create_notification_object_apis(
+        #         notification_type='Chat',
+        #         sender=instance.service.supplier.user,
+        #         receiver=instance.client.user,
+        #         order=instance,
+        #         heading='Placed a custom order',
+        #         description=f'Custom order is placed successfully with order number {serializer.data["order_number"]}'
+        #     )
+        #     send_notification(notification)
 
     def perform_update(self, serializer):
         instance = serializer.instance
@@ -77,38 +77,38 @@ class OrdersViewSet(ModelViewSet):
             return Response({'message': 'You can not update this order.'}, status=status.HTTP_400_BAD_REQUEST)
         if instance.status == 'in_progress' and serializer.validated_data.get('status') != 'completed':
             return Response({'message': 'You can not update status of this order.'}, status=status.HTTP_400_BAD_REQUEST)
-        if instance.status == 'pending' and serializer.validated_data.get('status') == 'in_progress':
-            notification = create_notification_object_apis(
-                notification_type='Order',
-                sender=instance.client.user,
-                receiver=instance.service.supplier.user,
-                order=instance,
-                heading='Update the Order status',
-                description=f'Order {instance.order_number} is in progress.'
-            )
-            send_notification(notification)
+        # if instance.status == 'pending' and serializer.validated_data.get('status') == 'in_progress':
+        #     notification = create_notification_object_apis(
+        #         notification_type='Order',
+        #         sender=instance.client.user,
+        #         receiver=instance.service.supplier.user,
+        #         order=instance,
+        #         heading='Update the Order status',
+        #         description=f'Order {instance.order_number} is in progress.'
+        #     )
+        #     send_notification(notification)
 
         serializer.save(completed_date=datetime.datetime.now())
-        if serializer.validated_data.get('status') == 'completed':
-            notification = create_notification_object_apis(
-                notification_type='Order',
-                sender=instance.client.user,
-                receiver=instance.service.supplier.user,
-                order=instance,
-                heading='Update the Order status',
-                description=f'Order {instance.order_number} is completed.'
-            )
-            send_notification(notification)
-        if serializer.validated_data.get('status') == 'rejected':
-            notification = create_notification_object_apis(
-                notification_type='Order',
-                sender=instance.client.user,
-                receiver=instance.service.supplier.user,
-                order=instance,
-                heading='Update the Order status',
-                description=f'Order {instance.order_number} is rejected.'
-            )
-            send_notification(notification)
+        # if serializer.validated_data.get('status') == 'completed':
+        #     notification = create_notification_object_apis(
+        #         notification_type='Order',
+        #         sender=instance.client.user,
+        #         receiver=instance.service.supplier.user,
+        #         order=instance,
+        #         heading='Update the Order status',
+        #         description=f'Order {instance.order_number} is completed.'
+        #     )
+        #     send_notification(notification)
+        # if serializer.validated_data.get('status') == 'rejected':
+        #     notification = create_notification_object_apis(
+        #         notification_type='Order',
+        #         sender=instance.client.user,
+        #         receiver=instance.service.supplier.user,
+        #         order=instance,
+        #         heading='Update the Order status',
+        #         description=f'Order {instance.order_number} is rejected.'
+        #     )
+        #     send_notification(notification)
 
 
 class UpdatePaymentStatusAPIView(UpdateAPIView):
