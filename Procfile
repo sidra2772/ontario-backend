@@ -1,1 +1,1 @@
-web: uvicorn coresite.asgi:application --host 0.0.0.0 --port 8000
+web: gunicorn coresite.wsgi --bind 0.0.0.0:8000
