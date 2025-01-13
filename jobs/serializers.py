@@ -12,6 +12,7 @@ class JobSerializer(serializers.ModelSerializer):
 
 
 class JobBidSerializer(serializers.ModelSerializer):
+    job_title = serializers.CharField(source='job.title', read_only=True)   
 
     class Meta:
         model = JobBids

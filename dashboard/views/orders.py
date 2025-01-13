@@ -50,7 +50,7 @@ class OrdersViewSet(ModelViewSet):
             client = serializer.validated_data.get('client', None)
         serializer.save(order_number=get_order_number(), hiring_date=datetime.datetime.now(), client=client)
         instance = serializer.instance
-        if not is_custom:
+        # if not is_custom:
         #     notification = create_notification_object_apis(
         #         notification_type='Order',
         #         sender=instance.client.user,
@@ -128,15 +128,15 @@ class UpdatePaymentStatusAPIView(UpdateAPIView):
         if instance.status == 'in_progress':
             return Response({'message': 'You can not update payment status of this order.'},
                             status=status.HTTP_400_BAD_REQUEST)
-        notification = create_notification_object_apis(
-            notification_type='Order',
-            sender=instance.service.supplier.user,
-            receiver=instance.client.user,
-            order=instance,
-            heading='Update the Payment status',
-            description=f'Payment status of order {instance.order_number} is updated to {request.data["payment_status"]}'
-        )
-        send_notification(notification)
+        # notification = create_notification_object_apis(
+        #     notification_type='Order',
+        #     sender=instance.service.supplier.user,
+        #     receiver=instance.client.user,
+        #     order=instance,
+        #     heading='Update the Payment status',
+        #     description=f'Payment status of order {instance.order_number} is updated to {request.data["payment_status"]}'
+        # )
+        # send_notification(notification)
         return super().update(request, *args, **kwargs)
 
 
