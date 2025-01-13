@@ -13,6 +13,9 @@ class JobSerializer(serializers.ModelSerializer):
 
 class JobBidSerializer(serializers.ModelSerializer):
     job_title = serializers.CharField(source='job.title', read_only=True)   
+    job_user_first_name = serializers.CharField(source='job.user.first_name', read_only=True)
+    job_user_last_name = serializers.CharField(source='job.user.last_name', read_only=True)
+    job_user_username= serializers.CharField(source='job.user.username', read_only=True)
 
     class Meta:
         model = JobBids
