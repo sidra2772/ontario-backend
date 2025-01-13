@@ -12,14 +12,58 @@ class OrdersSerializer(serializers.ModelSerializer):
     service_image = serializers.ImageField(source='service.image', read_only=True)
     client_username = serializers.CharField(source='client.user.username', read_only=True)
     client_image = serializers.ImageField(source='client.image', read_only=True)
-    supplier_username = serializers.CharField(source='service.supplier.user.username', read_only=True)
-    supplier_email = serializers.CharField(source='service.supplier.user.email', read_only=True)
-    supplier_image = serializers.ImageField(source='service.supplier.image', read_only=True)
-    supplier_first_name = serializers.CharField(source='service.supplier.first_name', read_only=True)
-    supplier_last_name = serializers.CharField(source='service.supplier.last_name', read_only=True)
-    supplier_id = serializers.IntegerField(source='service.supplier.id', read_only=True)
+    supplier_username = serializers.SerializerMethodField()
+    supplier_email = serializers.SerializerMethodField()
+    supplier_image = serializers.SerializerMethodField()
+    supplier_first_name = serializers.SerializerMethodField()
+    supplier_last_name = serializers.SerializerMethodField()
+    supplier_id = serializers.SerializerMethodField()
+    job_title = serializers.CharField(source='job.job.title', read_only=True)
+
     order_feedback = ClientFeedbackSerializer(read_only=True)
     order_feedback_supplier = SupplierFeedbackSerializer(read_only=True)
+
+    def get_supplier_username(self, obj):
+        if obj.service:
+            return obj.service.supplier.user.username
+        if obj.job:
+            return obj.job.bidder.user.username
+        return None
+
+    def get_supplier_email(self, obj):
+        if obj.service:
+            return obj.service.supplier.user.email
+        if obj.job:
+            return obj.job.bidder.user.email
+        return None
+
+    def get_supplier_image(self, obj):
+        if obj.service:
+            return obj.service.supplier.image
+        if obj.job:
+            return obj.job.bidder.image
+        return None
+
+    def get_supplier_first_name(self, obj):
+        if obj.service:
+            return obj.service.supplier.first_name
+        if obj.job:
+            return obj.job.bidder.first_name
+        return None
+
+    def get_supplier_last_name(self, obj):
+        if obj.service:
+            return obj.service.supplier.last_name
+        if obj.job:
+            return obj.job.bidder.last_name
+        return None
+
+    def get_supplier_id(self, obj):
+        if obj.service:
+            return obj.service.supplier.id
+        if obj.job:
+            return obj.job.bidder.id
+        return None
 
     class Meta:
         model = Orders
