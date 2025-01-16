@@ -5,6 +5,7 @@ from jobs.models import (
 
 
 class JobSerializer(serializers.ModelSerializer):
+    is_bid = serializers.BooleanField(read_only=True)
     class Meta:
         model = Jobs
         fields = '__all__'
@@ -16,6 +17,7 @@ class JobBidSerializer(serializers.ModelSerializer):
     job_user_first_name = serializers.CharField(source='job.user.first_name', read_only=True)
     job_user_last_name = serializers.CharField(source='job.user.last_name', read_only=True)
     job_user_username= serializers.CharField(source='job.user.username', read_only=True)
+
 
     class Meta:
         model = JobBids
