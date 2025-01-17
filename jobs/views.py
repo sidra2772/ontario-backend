@@ -17,7 +17,7 @@ class JobViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
     model = Jobs
     def get_queryset(self):
-        user = self.request.user  # Get the logged-in user
+        user = self.request.user.profile  # Get the logged-in user
         return Jobs.objects.annotate(
             is_bid=Exists(
                 JobBids.objects.filter(job=OuterRef('pk'), bidder=user)
