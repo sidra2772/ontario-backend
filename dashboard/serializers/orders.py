@@ -38,10 +38,10 @@ class OrdersSerializer(serializers.ModelSerializer):
         return None
 
     def get_supplier_image(self, obj):
-        if obj.service:
-            return obj.service.supplier.image
-        if obj.job:
-            return obj.job.bidder.image
+        # if obj.service:
+        #     return obj.service.supplier.image
+        # if obj.job:
+        #     return obj.job.bidder.image
         return None
 
     def get_supplier_first_name(self, obj):
