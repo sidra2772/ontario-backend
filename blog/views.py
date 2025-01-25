@@ -1,12 +1,30 @@
 from rest_framework import viewsets
 from django.utils.text import slugify
-from .models import BlogPost, Events, EventBookings
+
+from coresite.mixin.permission_mixin import IsAdminUser
+from .models import BlogPost, Events, EventBookings, NewsAndUpdates
 from rest_framework.generics import CreateAPIView, ListAPIView, RetrieveAPIView
-from .serializers import BlogPostSerializer, EventsSerializer, EventBookingsSerializer
+from .serializers import BlogPostSerializer, EventsSerializer, EventBookingsSerializer, NewsAndUpdatesSerializer
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from utils.paginations import OurLimitOffsetPagination
 # Create your views here.
 
+
+class CreateNewsAndUpdates(CreateAPIView):
+	serializer_class = NewsAndUpdatesSerializer
+	queryset = NewsAndUpdates.objects.all()
+	permission_classes = [IsAdminUser]
+
+class ListNewsAndUpdates(ListAPIView):
+	serializer_class = NewsAndUpdatesSerializer
+	queryset = NewsAndUpdates.objects.all()
+	permission_classes = [AllowAny]
+	pagination_class = OurLimitOffsetPagination
+
+class RetrieveNewsAndUpdates(RetrieveAPIView):
+	serializer_class = NewsAndUpdatesSerializer
+	queryset = NewsAndUpdates.objects.all()
+	permission_classes = [AllowAny]
 
 class CreateBooking(CreateAPIView):
 	serializer_class = EventBookingsSerializer

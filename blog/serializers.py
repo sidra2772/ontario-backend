@@ -1,5 +1,11 @@
-from .models  import BlogPost, Events, EventBookings
+from .models  import BlogPost, Events, EventBookings, NewsAndUpdates
 from rest_framework import serializers
+
+
+class NewsAndUpdatesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = NewsAndUpdates
+        fields = '__all__'
 
 
 class BlogPostSerializer(serializers.ModelSerializer):
@@ -11,6 +17,7 @@ class BlogPostSerializer(serializers.ModelSerializer):
     author_first_name = serializers.CharField(source='author.first_name', read_only=True)
     author_last_name = serializers.CharField(source='author.last_name', read_only=True)
     author = serializers.IntegerField(source='author.id', read_only=True)
+
 
     
     class Meta:

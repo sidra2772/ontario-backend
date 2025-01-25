@@ -62,3 +62,16 @@ class EventBookings(AbstractTimeStampModel):
 	class Meta:
 		verbose_name_plural = 'Event Bookings'
 		db_table = 'event_bookings'
+
+class NewsAndUpdates(AbstractTimeStampModel):
+	title = models.CharField(max_length=255)
+	thumbnail = models.ImageField(upload_to='news/thumbnails/', null=True, blank=True)
+	description = CKEditor5Field('Text', config_name='extends')
+	author = models.ForeignKey("userprofile.UserProfile", on_delete=models.CASCADE,null=True)
+	meta_data = models.JSONField(null=True, blank=True)
+
+	def __str__(self):
+		return self.title
+	class Meta:
+		verbose_name_plural = 'News And Updates'
+		db_table = 'news_and_updates'
