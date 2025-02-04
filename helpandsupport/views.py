@@ -3,11 +3,17 @@ from rest_framework import filters
 from django_filters import rest_framework as backend_filters
 from utils.paginations import OurLimitOffsetPagination
 from .models import Report, ReportImage
-from .serializers import ReportSerializer, CreateReportSerializer
+from .serializers import ReportSerializer, CreateReportSerializer, NewsLetterSerializer
 from rest_framework.permissions import AllowAny
-from rest_framework.generics import DestroyAPIView
+from rest_framework.generics import DestroyAPIView, CreateAPIView
 from userprofile.models import UserProfile
 from notification.utils import send_notification, create_notification_object_apis
+
+
+class NewsLetterAPIView(CreateAPIView):
+    queryset = NewsLetterSerializer.Meta.model.objects.all()
+    serializer_class = NewsLetterSerializer
+    permission_classes = [AllowAny]
 
 
 class ReportViewSet(ModelViewSet):

@@ -15,6 +15,7 @@ class Categories(AbstractTimeStampModel):
     category_slug = models.SlugField(max_length=100, unique=True)
     image = models.FileField(upload_to='category', null=True, blank=True)
     category_type = models.CharField(choices=CATEGORY_CHOICES, max_length=100, default=CATEGORY_CHOICES[0][1])
+    is_popular = models.BooleanField(default=False)
     def __str__(self):
         return self.name
 

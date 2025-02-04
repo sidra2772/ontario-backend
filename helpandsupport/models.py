@@ -49,3 +49,19 @@ class Report(AbstractTimeStampModel):
 
     def __str__(self):
         return self.subject
+
+class NewsLetter(AbstractTimeStampModel):
+    email = models.EmailField(unique=True)
+
+    def __str__(self):
+        return self.email
+
+    class Meta:
+        verbose_name = 'News Letter'
+        verbose_name_plural = 'News Letters'
+        db_table = 'news_letters'
+        ordering = ['-id']
+        indexes = [
+            models.Index(fields=['-id']),
+            models.Index(fields=['-created_at']),
+        ]

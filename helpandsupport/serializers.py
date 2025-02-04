@@ -2,9 +2,15 @@ from rest_framework import serializers
 from .models import (
     Report,
     ReportImage,
+    NewsLetter,
 )
 from dashboard.serializers import OrdersSerializer
 
+
+class NewsLetterSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = NewsLetter
+        fields = '__all__'
 
 class ReportImageSerializer(serializers.ModelSerializer):
     class Meta:
