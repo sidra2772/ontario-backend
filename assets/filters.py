@@ -6,3 +6,4 @@ class SubCategoriesFilter(filters.FilterSet):
     class Meta:
         model = SubCategories
         fields = ['category', 'name', ]
+
