@@ -120,7 +120,7 @@ class UpdatePaymentStatusAPIView(UpdateAPIView):
 
     def get_queryset(self):
         if self.request.user.is_authenticated:
-            return self.queryset.filter(service__supplier=self.request.user.profile)
+            return self.queryset.filter(Q(service__supplier=self.request.user.profile)|Q(job__bidder=self.request.user.profile))
         return self.queryset.none()
 
     def update(self, request, *args, **kwargs):
