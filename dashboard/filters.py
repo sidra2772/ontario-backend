@@ -22,5 +22,5 @@ class OrdersFilters(filters.FilterSet):
             'service', 'client', 'total_price', 'hiring_date', 'discount',
             'min_total_price', 'max_total_price', 'from_hiring_date', 'to_hiring_date',
             'min_discount', 'max_discount', 'service__supplier', 'service__service_status',
-            'service__sub_category',
+            'service__sub_category','payment_status','status'
         ]
