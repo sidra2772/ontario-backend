@@ -9,12 +9,22 @@ from .serializers import (
     JobSerializer,
     JobBidSerializer
 )
+from django_filters import rest_framework as backend_filters
+from rest_framework import filters
 
 
 
 class JobViewSet(viewsets.ModelViewSet):
     serializer_class = JobSerializer
     permission_classes = [permissions.IsAuthenticated]
+    filter_backends = [
+        backend_filters.DjangoFilterBackend,
+        filters.SearchFilter,
+        filters.OrderingFilter
+    ]
+    search_fields = ['title', 'description']
+    ordering_fields = ['created_at']
+    filterset_fields = ['user', 'bid_type']
     model = Jobs
     def get_queryset(self):
         user = self.request.user.profile  # Get the logged-in user
