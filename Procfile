@@ -1,1 +1,1 @@
-web: daphne coresite.asgi:application --port $PORT --bind 0.0.0.0
+web: gunicorn coresite.wsgi --bind 0.0.0.0:8000
