@@ -56,6 +56,7 @@ LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
+DJANGO_SETTINGS_MODULE='coresite.settings'
 
 USE_TZ = True
 COMPANY_NAME = env("COMPANY_NAME")
