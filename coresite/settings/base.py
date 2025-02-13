@@ -13,7 +13,7 @@ SECRET_KEY = env("SECRET_KEY")
 
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["*","https://server.onma.ca"]
 DOMAIN = env("DOMAIN")
 
 ROOT_URLCONF = 'coresite.urls'
