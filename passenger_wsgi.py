@@ -2,7 +2,7 @@ import os
 import sys
 
 # Path to the virtual environment's Python interpreter
-INTERP = "/home/onmaxmls/virtualenv/ontario-backend/3.12/bin/python"
+INTERP = "/home/onmaxmls/virtualenv/ontario-backend/3.12/bin/activate"
 
 # Ensure the script is running with the correct Python interpreter
 if sys.executable != INTERP:
