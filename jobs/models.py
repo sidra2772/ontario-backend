@@ -1,6 +1,5 @@
 from django.db import models
 from coresite.mixin import AbstractTimeStampModel
-from django.contrib.postgres.fields import ArrayField
 
 
 class Jobs(AbstractTimeStampModel):
@@ -9,7 +8,7 @@ class Jobs(AbstractTimeStampModel):
     description = models.TextField()
     bit_type = models.CharField(max_length=255, null=True, blank=True)
     job_price = models.DecimalField(max_digits=10, decimal_places=2)
-    tags = ArrayField(models.CharField(max_length=255), blank=True, null=True)
+    tags = models.CharField(max_length=255, null=True, blank=True)
     bid_closing_date = models.DateTimeField()
     duration_in_months = models.PositiveIntegerField()
     submission_type = models.CharField(max_length=255)
