@@ -24,7 +24,7 @@ class JobViewSet(viewsets.ModelViewSet):
     ]
     search_fields = ['title', 'description']
     ordering_fields = ['created_at']
-    filterset_fields = ['user', 'bid_type']
+    filterset_fields = ['user']
     model = Jobs
     def get_queryset(self):
         user = self.request.user.profile  # Get the logged-in user
