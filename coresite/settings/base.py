@@ -82,8 +82,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 REACT_DOMAIN = env("REACT_DOMAIN")
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://ontarios-staging.beyonderissolutions.com',
-    'https://ontarios-staging.beyonderissolutions.com',
+    "*","https://portal.onma.ca",'http://18.224.30.203:8000',"http://portal.onma.ca","http://localhost:3000","http://localhost:8000"
 ]
 
 NON_BUSINESS_EMAILS = env("NON_BUSINESS_EMAILS", cast=lambda v: [
