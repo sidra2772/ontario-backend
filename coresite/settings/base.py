@@ -13,7 +13,7 @@ SECRET_KEY = env("SECRET_KEY")
 
 DEBUG = True
 
-ALLOWED_HOSTS = ["*","https://server.onma.ca"]
+ALLOWED_HOSTS = ["*","https://portal.onma.ca",'http://18.224.30.203:8000',"http://portal.onma.ca","http://localhost:3000","http://localhost:8000"]
 DOMAIN = env("DOMAIN")
 
 ROOT_URLCONF = 'coresite.urls'
