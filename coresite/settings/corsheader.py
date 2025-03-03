@@ -24,4 +24,4 @@ CORS_ALLOW_HEADERS = (
     'Access-Control-Allow-Origin',
 )
 
-CORS_ORIGIN_WHITELIST = ['http://localhost:3000', 'http://localhost:3001','https://localhost:3000', 'https://localhost:3001', "*","https://portal.onma.ca",'http://18.224.30.203:8000',"http://portal.onma.ca","http://localhost:3000","http://localhost:8000" ]
+CORS_ORIGIN_WHITELIST = ["*"]
