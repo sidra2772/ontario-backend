@@ -13,7 +13,6 @@ SECRET_KEY = env("SECRET_KEY")
 
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
 DOMAIN = env("DOMAIN")
 
 ROOT_URLCONF = 'coresite.urls'
@@ -80,10 +79,6 @@ STATIC_URL = '/staticfiles/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 REACT_DOMAIN = env("REACT_DOMAIN")
-
-CSRF_TRUSTED_ORIGINS = [
-    "*"
-]
 
 NON_BUSINESS_EMAILS = env("NON_BUSINESS_EMAILS", cast=lambda v: [
     s.strip() for s in v.split(',')])

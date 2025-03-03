@@ -24,4 +24,15 @@ CORS_ALLOW_HEADERS = (
     'Access-Control-Allow-Origin',
 )
 
-CORS_ORIGIN_WHITELIST = ["*"]
+
+CORS_ALLOWED_ORIGINS = [
+    "https://portal.onma.ca",
+    "http://localhost:3000",  # If testing locally
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://portal.onma.ca",
+    "http://localhost:3000"
+]
+
+ALLOWED_HOSTS = ["portal.onma.ca", "your-api.com", "127.0.0.1", "localhost","18.224.30.203:8000"]
