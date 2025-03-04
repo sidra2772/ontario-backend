@@ -1,5 +1,7 @@
 from django.db import models
 from coresite.mixin import AbstractTimeStampModel
+from django.contrib.postgres.fields import ArrayField
+
 
 SERVICE_STATUS = (
     ('Pending', 'Pending'),
@@ -32,7 +34,7 @@ class Services(AbstractTimeStampModel):
     currency = models.ForeignKey('assets.Currency', related_name='servicesCurrency', on_delete=models.CASCADE,
                                  null=True, blank=True)
     attachment = models.FileField(upload_to='services/attachments/', null=True, blank=True)
-    tags = models.CharField(max_length=255, null=True, blank=True)
+    tags = ArrayField(models.CharField(max_length=255), null=True, blank=True)
     availability_start_time = models.TimeField(null=True, blank=True)
     availability_end_time = models.TimeField(null=True, blank=True)
     availability_days = models.CharField(max_length=255, choices=AVAILABLE_DAYS, default='all_days')
