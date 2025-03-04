@@ -34,7 +34,7 @@ CORS_ALLOWED_ORIGINS = [
 CSRF_TRUSTED_ORIGINS = [
     "https://portal.onma.ca",
     "http://localhost:3000",
-    "https://backend.onma.ca"
+    "https://backend.onma.ca",
 ]
 
-ALLOWED_HOSTS = ["portal.onma.ca", "your-api.com", "18.224.30.203", "localhost","18.224.30.203","backend.onma.ca","127.0.0.1","localhost"]
+ALLOWED_HOSTS = ["portal.onma.ca", "your-api.com", "18.224.30.203", "localhost","18.224.30.203","backend.onma.ca","127.0.0.1","localhost","*"]
