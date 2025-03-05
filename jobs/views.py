@@ -42,6 +42,14 @@ class JobBidViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
     model = JobBids
     queryset = JobBids.objects.all().order_by('-created_at')
+    filter_backends = [
+        backend_filters.DjangoFilterBackend,
+        filters.SearchFilter,
+        filters.OrderingFilter
+    ]
+    search_fields = ['job', 'bidder']
+    ordering_fields = ['created_at']
+    filterset_fields = ['job', 'bidder']
 
     def perform_create(self, serializer):
         serializer.save(bidder=self.request.user.profile)

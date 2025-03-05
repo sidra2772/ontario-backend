@@ -56,14 +56,10 @@ class ServicesViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         if self.request.user.is_authenticated:
-            if self.request.user.user_type == 'supplier':
-                return self.queryset.filter(supplier=self.request.user.profile)
-        return self.queryset.filter(service_status='Active')
+            return self.queryset.filter(service_status='Active')
 
     def perform_create(self, serializer):
         """ This method is used to create a service """
-        if self.request.user.user_type != 'supplier':
-            return Response({'error': 'You are not allowed to create a service'}, status=status.HTTP_403_FORBIDDEN)
         latest_service = Services.objects.last()
         if latest_service:
             latest_id = latest_service.id + 1
