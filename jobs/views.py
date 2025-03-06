@@ -49,7 +49,7 @@ class JobBidViewSet(viewsets.ModelViewSet):
     ]
     search_fields = ['job', 'bidder']
     ordering_fields = ['created_at']
-    filterset_fields = ['job', 'bidder']
+    filterset_fields = ['job', 'bidder','job__user']
 
     def perform_create(self, serializer):
         serializer.save(bidder=self.request.user.profile)
