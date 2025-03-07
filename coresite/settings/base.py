@@ -5,9 +5,7 @@ from .application import (
     THIRD_PARTY_APPLICATIONS,
 )
 
-SETTINGS_PATH = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
-# BASE_DIR = os.path.dirname(os.path.dirname(
-#     os.path.dirname(os.path.abspath(__file__))))
+SETTINGS_PATH = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 SECRET_KEY = env("SECRET_KEY")
 
@@ -15,7 +13,6 @@ DEBUG = True
 
 DOMAIN = env("DOMAIN")
 ROOT_URLCONF = 'coresite.urls'
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
