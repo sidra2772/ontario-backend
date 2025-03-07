@@ -28,12 +28,47 @@ TEMPLATES = [
         },
     },
 ]
-
 INSTALLED_APPS = [
-    *DJANGO_APPLICATIONS,
-    *CUSTOM_APPLICATIONS,
-    *THIRD_PARTY_APPLICATIONS,
+    # Django built-in apps
+    'django.contrib.auth',
+    'django.contrib.admin',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.contenttypes',
+
+    # Third-party apps (Daphne must be before django.contrib.staticfiles)
+    'daphne',  # Move this before 'django.contrib.staticfiles'
+
+    'admin_interface',
+    'storages',
+    'colorfield',
+    'django_ckeditor_5',
+    'drf_yasg',
+    'channels',
+    'corsheaders',
+    'rest_framework',
+    'rest_framework_simplejwt',
+
+    # Django static files app
+    'django.contrib.staticfiles',
+
+    # Custom apps
+    'core',
+    'jobs',
+    'chat',
+    'blog',
+    'assets',
+    'services',
+    'homePage',
+    'dashboard',
+    'userprofile',
+    'notification',
+    'helpandsupport',
+    'adminDashboard',
+    'subcategoriespage',
+    'categoriespage',
 ]
+
 
 ASGI_APPLICATION = 'coresite.asgi.application'
 
