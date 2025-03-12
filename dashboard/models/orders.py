@@ -31,6 +31,7 @@ class Orders(AbstractTimeStampModel):
         ("pending", "Pending"),
         ('paid', 'Paid'),
         ('overdue', 'overdue'),
+        ("partial_paid", "Partial Paid"),
     )
     client = models.ForeignKey(
         "userprofile.UserProfile", on_delete=models.CASCADE, related_name='client_offer', null=True, blank=True)

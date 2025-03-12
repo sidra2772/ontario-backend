@@ -125,9 +125,6 @@ class UpdatePaymentStatusAPIView(UpdateAPIView):
 
     def update(self, request, *args, **kwargs):
         instance = self.get_object()
-        if instance.status == 'in_progress':
-            return Response({'message': 'You can not update payment status of this order.'},
-                            status=status.HTTP_400_BAD_REQUEST)
         # notification = create_notification_object_apis(
         #     notification_type='Order',
         #     sender=instance.service.supplier.user,
