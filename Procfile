@@ -1,1 +1,1 @@
-web: gunicorn coresite.wsgi --bind 0.0.0.0:8000
+web: gunicorn coresite.asgi:application -k uvicorn.workers.UvicornWorker
