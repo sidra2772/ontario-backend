@@ -70,7 +70,7 @@ INSTALLED_APPS = [
 ]
 
 
-ASGI_APPLICATION = 'coresite.asgi.application'
+ASGI_APPLICATION = "coresite.asgi.application"
 
 CHANNEL_LAYERS = {
     "default": {
