@@ -70,8 +70,8 @@ INSTALLED_APPS = [
 ]
 
 
+WSGI_APPLICATION = "coresite.wsgi.application"
 ASGI_APPLICATION = "coresite.asgi.application"
-
 CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
