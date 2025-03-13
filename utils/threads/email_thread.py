@@ -60,7 +60,7 @@ def send_mail(subject, html_content, recipient_list, key=None, files=None):
 
     company_information = {
         "company_name": settings.COMPANY_NAME,
-        'company_address': settings.COMPANY_ADDRESS,
+        'company_address': "ontario",
         'company_email': settings.COMPANY_EMAIL,
         'company_phone': settings.COMPANY_PHONE,
         'company_website': settings.COMPANY_WEBSITE,
