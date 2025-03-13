@@ -71,7 +71,7 @@ INSTALLED_APPS = [
 
 
 ASGI_APPLICATION = 'coresite.asgi.application'
-wsgi_application = 'coresite.wsgi.application'
+WSGI_APPLICATION = 'coresite.wsgi.application'
 
 CHANNEL_LAYERS = {
     "default": {
