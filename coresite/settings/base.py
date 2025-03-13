@@ -73,13 +73,13 @@ INSTALLED_APPS = [
 ASGI_APPLICATION = 'coresite.asgi.application'
 WSGI_APPLICATION = 'coresite.wsgi.application'
 
-REDIS_URL = os.getenv("REDIS_URL", "redis://localhost:6379")
+REDIS_URL = os.getenv("REDIS_URL")
 
 CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-            "hosts": [REDIS_URL.replace("redis://", "rediss://")],  # Force TLS if needed
+            "hosts": [REDIS_URL],  # Force TLS if needed
         },
     },
 }
