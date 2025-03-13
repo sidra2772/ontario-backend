@@ -40,6 +40,7 @@ class Orders(AbstractTimeStampModel):
     service = models.ForeignKey(
         "services.Services", on_delete=models.CASCADE, related_name='service_offer',null=True, blank=True)
     is_custom_offer = models.BooleanField(default=False)
+    is_delivered = models.BooleanField(default=False)
     payment_via = models.CharField(
         max_length=255, choices=PAYMENT_VIA, null=True, blank=True)
     description = models.TextField()
