@@ -12,6 +12,7 @@ from notification.utils import send_notification, create_notification_object_api
 from django.db.models import Avg
 from rest_framework.permissions import AllowAny
 from rest_framework.generics import ListAPIView
+from django.db.models import Q
 
 
 class PopularServicesViewSet(ListAPIView):
@@ -55,8 +56,8 @@ class ServicesViewSet(viewsets.ModelViewSet):
     ordering_fields = ['id', 'price', 'created_at', 'updated_at']
 
     def get_queryset(self):
-        if self.request.user.is_authenticated:
-            return self.queryset.filter(service_status='Active')
+
+        return self.queryset.filter(Q(service_status='Active')|Q(supplier=self.request.user.profile))
 
     def perform_create(self, serializer):
         """ This method is used to create a service """
