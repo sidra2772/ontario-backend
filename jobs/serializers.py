@@ -6,6 +6,7 @@ from jobs.models import (
 
 class JobSerializer(serializers.ModelSerializer):
     is_bid = serializers.BooleanField(read_only=True)
+
     class Meta:
         model = Jobs
         fields = '__all__'
